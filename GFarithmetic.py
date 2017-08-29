@@ -19,8 +19,7 @@ def initiation():
     FIELD_POWER = binary(aux)
 
 def binary(A):
-    A = A.replace('d', '')
-    A = int(A)
+
     Cx = []
     s = ''
     while (A > 0):
@@ -28,39 +27,20 @@ def binary(A):
         A //= 2
     for i in range(len(Cx)):
         s += str(Cx[i])
-    power = int(FIELD_POWER)
-    s = s.zfill(power)
     return s
 
 #Для ввода десятичного числа начинайте с символа "d" пример: "d10110"
 
 
-def add(firstnumber, secondnumber):  # сложение 2-х элементов
-    power = int(FIELD_POWER)
-    if firstnumber.find('d') != -1:
-        firstnumber = binary(firstnumber)
-        firstnumber = int(firstnumber, 2)
-    else:
-        firstnumber = int(firstnumber, 2)  #преобразование строк в числа)
-
-    if secondnumber.find('d') != -1:
-        secondnumber = binary(secondnumber)
-        secondnumber = int(secondnumber, 2)
-    else :
-        secondnumber = int(secondnumber, 2)
-
+def add(firstnumber, secondnumber):  # сложение 2-х элементо
     res = firstnumber ^ secondnumber #операция xor
-    res = int(res)
-    res = bin(res) #преобразование числа в 2ичную строку
-    res = res.replace('b', '') # удаление вспомогательного обозначения
-    res = res.zfill(power) #заполнение число 0 если оно меньше степени поля
-
     return res  # Возвращает строку
 
 
 
 def multiplication(firstnumer, secondnumber):
-    firstnumer = int(firstnumer, 2)
+    secondnumber = bin(secondnumber)
+    secondnumber = secondnumber[2:]
     secondnumber = secondnumber[::-1]
     aux = len(secondnumber)
     auxila = int(ZERO_POLY, 2)
@@ -81,15 +61,27 @@ def multiplication(firstnumer, secondnumber):
                 x += 1
             res = res ^ helps
         i += 1
-    return bin(res)
-
+    return res
 
 def inverse_poly(number):  #нахождение обратного члена
-    result = multiplication(number, number)
-    print("result inverse 1: ", result)
-    for i in range(2 ** int(FIELD_POWER)-4):
-        result = multiplication(number, result)
-        print("number of inverse: ", i+2, " ", result)
+    exponent = int(FIELD_POWER)
+    exponent = (2 ** exponent)-2
+    result = fast_pow(number, exponent)
+    return result
+
+
+def fast_pow(firstnumber, secondnumber):
+    secondnumber = binary(secondnumber)
+    result = 1
+    aux = len(secondnumber)
+    for i in secondnumber[:aux-1]:
+        if i == '1':
+            result = multiplication(result, firstnumber)
+            result = multiplication(result, result)
+        else:
+            result = multiplication(result, result)
+    if secondnumber[aux-1] == '1':
+        result = multiplication(result, firstnumber)
     return result
 
 
@@ -103,8 +95,6 @@ def subtraction(number1, number2): #вычитание
     auxiliary = inverse_poly(number2)
     result = add(number1, auxiliary)
     return result
-
-
 
 
 
