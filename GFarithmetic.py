@@ -18,8 +18,8 @@ def initiation():
     aux = int(FIELD_POW.get(st), 8)
     FIELD_POWER = binary(aux)
 
-def binary(A):
 
+def binary(A):
     Cx = []
     s = ''
     while (A > 0):
@@ -100,7 +100,7 @@ def subtraction(number1, number2): #вычитание
     result = add(number1, auxiliary)
     return result
 
-print(fast_pow(3, 1000))
+
 
 
 
