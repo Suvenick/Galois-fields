@@ -72,9 +72,13 @@ def inverse_poly(number):  #нахождение обратного члена
 
 def fast_pow(firstnumber, secondnumber):
     secondnumber = binary(secondnumber)
+    print(secondnumber)
     result = 1
     aux = len(secondnumber)
     for i in secondnumber[:aux-1]:
+        a = 1
+        print(a)
+        a += 1
         if i == '1':
             result = multiplication(result, firstnumber)
             result = multiplication(result, result)
@@ -96,7 +100,7 @@ def subtraction(number1, number2): #вычитание
     result = add(number1, auxiliary)
     return result
 
-
+print(fast_pow(3, 1000))
 
 
 
