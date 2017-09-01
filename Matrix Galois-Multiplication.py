@@ -10,6 +10,25 @@ def pr(c):
         print()
 
 
+def multiply(a, bT):
+    # умножаем A*B
+    if len(a[0]) != len(b):
+        print("Невозможно умножить")
+        input()
+    # инициализируем матрицу C
+    c = [[0 for row in range(len(bT[0]))] for col in range(len(a))]
+    for i in range(len(a)):
+        for j in range(len(bT[0])):
+            for k in range(len(bT)):
+                c[i][j] += testProject.multiplication(a[i][k], bT[k][j])
+    pr(c)
+
+def assign(a):
+    for i in range(r):
+        for j in range(c):
+            a[i][j] = int(input())
+
+
 while ch == 'y':
         print("Введите параметры матрицы А\n")
         # initialize Matrix A
@@ -17,9 +36,7 @@ while ch == 'y':
         c = int(input("Введите количество столбцов матрицы A: "))
         a = [[0 for row in range(r)] for col in range(c)]
         print("Матрица A")
-        for i in range(r):
-            for j in range(c):
-                a[i][j] = int(input())
+        assign(a)
         print("Матрица A:")
         pr(a)
         input()
@@ -30,9 +47,7 @@ while ch == 'y':
         c = int(input("Введите количество столбцов матрицы B: "))
         b = [[0 for row in range(c)] for col in range(r)]
         print("Матрица B")
-        for i in range(r):
-            for j in range(c):
-                b[i][j] = int(input())
+        assign(b)
         print("Матрица B:")
         pr(b)
         print("Траспонированная матрица B:")
@@ -44,25 +59,6 @@ while ch == 'y':
         input()
 
         while ch == 'y':
-            x = int(input("Нажмите 1 для умножения матриц: "))
-
-            if x == 1:
-                # умножаем A*B
-                if len(a[0]) != len(b):
-                    print("Невозможно умножить")
-                    input()
-                    continue
-                # инициализируем матрицу C
-                c = [[0 for row in range(len(bT[0]))] for col in range(len(a))]
-                for i in range(len(a)):
-                    for j in range(len(bT[0])):
-                        for k in range(len(bT)):
-                            c[i][j] += testProject.multiplication(a[i][k], bT[k][j])
-
-
-            else:
-                print("Invalid choice")
-                flag = 1
             if flag != 1:
                 print("-------------------------------------------------------")
                 # Печать матрицы A
@@ -75,6 +71,5 @@ while ch == 'y':
 
                 # Печать матрицы С
                 print("\nРезультат умножения на транспонированную матрицу", '\n')
-                pr(c)
+                multiply(a, bT)
                 break
-
