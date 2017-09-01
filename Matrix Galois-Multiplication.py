@@ -1,10 +1,9 @@
 ch = 'y'
 flag = 0
-<<<<<<< HEAD
+
 import GFarithmetic
-=======
-import testProject
->>>>>>> 1a3455d9f3663491ea27d6cc5a21ebc0b247686a
+
+
 
 # Вывод матрицы
 def pr(c):
@@ -61,11 +60,7 @@ while ch == 'y':
                 for i in range(len(a)):
                     for j in range(len(bT[0])):
                         for k in range(len(bT)):
-<<<<<<< HEAD
                             c[i][j] += GFarithmetic.multiplication(a[i][k], bT[k][j])
-=======
-                            c[i][j] += testProject.multiplication(a[i][k], bT[k][j])
->>>>>>> 1a3455d9f3663491ea27d6cc5a21ebc0b247686a
 
 
             else:
@@ -84,9 +79,5 @@ while ch == 'y':
                 # Печать матрицы С
                 print("\nРезультат умножения на транспонированную матрицу", '\n')
                 pr(c)
-<<<<<<< HEAD
-                break
-=======
                 break
 
->>>>>>> 1a3455d9f3663491ea27d6cc5a21ebc0b247686a
