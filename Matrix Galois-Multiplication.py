@@ -1,6 +1,6 @@
 ch = 'y'
 flag = 0
-import testProject
+import GFarithmetic
 
 # Вывод матрицы
 def pr(c):
@@ -20,7 +20,7 @@ def multiply(a, bT):
     for i in range(len(a)):
         for j in range(len(bT[0])):
             for k in range(len(bT)):
-                c[i][j] += testProject.multiplication(a[i][k], bT[k][j])
+                c[i][j] += GFarithmetic.multiplication(a[i][k], bT[k][j])
     pr(c)
 
 def assign(a):
