@@ -63,6 +63,7 @@ def multiplication(firstnumer, secondnumber):
         i += 1
     return res
 
+
 def inverse_poly(number):  #нахождение обратного члена
     exponent = int(FIELD_POWER)
     exponent = (2 ** exponent)-2
@@ -99,14 +100,5 @@ def subtraction(number1, number2): #вычитание
     auxiliary = inverse_poly(number2)
     result = add(number1, auxiliary)
     return result
-
-
-
-
-
-
-
-
-
 
 
